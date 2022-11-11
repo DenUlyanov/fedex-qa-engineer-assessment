@@ -1,0 +1,55 @@
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Intellij
+.idea/
+*.iws
+*.iml
+/out/
+
+# Sensitive or high-churn files:
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+
+#Gradle
+.gradle
+/build/
+.gradle/
+build/
+gradle/
+gradlew
+gradlew.bat
+
+# User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+
+## Plugin-specific files:
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+# JIRA plugin
+atlassian-ide-plugin.xml
+order-api-client/bin/
+packages/
+paket-files/
+.fake/
+allure-results/
+TestReportFileAppender_*
