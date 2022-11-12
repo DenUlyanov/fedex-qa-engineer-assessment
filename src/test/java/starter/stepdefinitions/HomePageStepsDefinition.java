@@ -1,10 +1,14 @@
 package starter.stepdefinitions;
 
+import com.fedex.pageObject.CreateUserPage;
 import com.fedex.pageObject.HomePage;
+import com.fedex.pageObject.LoginPage;
+import com.fedex.pageObject.OpenAccountPage;
 import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,5 +50,26 @@ public class HomePageStepsDefinition extends BaseStep {
     public void afterScenario() {
         logger.info("Closing browser window ... ");
         driver.close();
+    }
+
+    @Then("verify login page is accessible from home page")
+    public void verifyLoginPageIsAccessibleFromHomePage() {
+        LoginPage loginPage = homePage.navigateToLoginPage();
+        Assert.assertTrue("Login page is not displayed",
+                loginPage.isLoginPageDisplayed());
+    }
+
+    @Then("verify create user page is accessible from home page")
+    public void verifyCreateUserPageIsAccessibleFromHomePage() {
+        CreateUserPage createUserPage = homePage.navigateToCreateUserPage();
+        Assert.assertTrue("Create user page is not displayed",
+                createUserPage.isCreateUserPageDisplayed());
+    }
+
+    @Then("verify open account page is accessible from home page")
+    public void verifyOpenAccountPageIsAccessibleFromHomePage() {
+        OpenAccountPage openAccountPage = homePage.navigateToOpenAccountPage();
+        Assert.assertTrue("Open account page is not displayed",
+                openAccountPage.isOpenAccountPageDisplayed());
     }
 }

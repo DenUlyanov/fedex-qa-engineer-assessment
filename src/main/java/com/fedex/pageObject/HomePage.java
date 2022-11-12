@@ -123,4 +123,24 @@ public class HomePage {
         logger.info("Address filled successfully");
     }
 
+    public LoginPage navigateToLoginPage() {
+        logger.info("Navigating to Login page");
+        browser.clickElement(driver.findElement(By.id(HomePageLocators.LOGIN_SIGHNUP_LINK)));
+        browser.clickElement(driver.findElement(By.xpath(HomePageLocators.LOG_IN)));
+        return new LoginPage(driver);
+    }
+
+    public CreateUserPage navigateToCreateUserPage() {
+        logger.info("Navigating to Create User page");
+        browser.clickElement(driver.findElement(By.id(HomePageLocators.LOGIN_SIGHNUP_LINK)));
+        browser.clickElement(driver.findElement(By.xpath(HomePageLocators.CREATE_USER)));
+        return new CreateUserPage(driver);
+    }
+
+    public OpenAccountPage navigateToOpenAccountPage() {
+        logger.info("Navigating to Open Account page");
+        browser.clickElement(driver.findElement(By.id(HomePageLocators.LOGIN_SIGHNUP_LINK)));
+        browser.clickElement(driver.findElement(By.xpath(HomePageLocators.OPEN_ACCOUNT)));
+        return new OpenAccountPage(driver);
+    }
 }

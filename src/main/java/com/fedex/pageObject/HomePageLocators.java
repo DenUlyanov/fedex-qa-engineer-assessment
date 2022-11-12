@@ -18,4 +18,8 @@ public class HomePageLocators {
     public static final String RATE_SUMMARY = "rateSummary";
     public static final String SERVICE_OPTIONS = "serviceOptions";
     public static final String RATE_DETAILS = ".fdx-c-list--unstyled.fdx-c-list--bordered.fdx-u-mb--4.fdx-u-border--bottom";
+    public static final String LOGIN_SIGHNUP_LINK = "fxg-dropdown-signIn";
+    public static final String LOG_IN = "//a[@aria-label='LOG IN']";
+    public static final String CREATE_USER = "//a[@aria-label='CREATE USER ID (FOR EXISTING CUSTOMERS)']";
+    public static final String OPEN_ACCOUNT = "//*[@id='global-login-wrapper']/div/div/div/div[3]/div/a";
 }
