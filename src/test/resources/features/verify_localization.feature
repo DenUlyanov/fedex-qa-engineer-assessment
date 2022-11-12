@@ -1,4 +1,4 @@
-Feature: Verify home page
+Feature: Verify localization of home page
 
   Scenario Outline: Verify home page localization URL
     When customer navigates to home page
@@ -9,3 +9,4 @@ Feature: Verify home page
       | Netherlands    | Nederlands | nl-nl  |
       | Netherlands    | English    | en-nl  |
       | United Kingdom | English    | en-gb  |
+
