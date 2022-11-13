@@ -1,7 +1,6 @@
 package com.fedex.pageObject;
 
 public class HomePageLocators {
-    public static final String COOKIES_WRAPPER = "fxg-cookie-consent__wrapper";
     public static final String COOKIES_ACCEPT = "fxg-cookie-consent__accept";
     public static String LOCALE_COUNTRY = "fxg-geo-locator__country";
     public static String LOCALE_COUNTRY_TITLE = "fxg-geo-locator__country-title";
