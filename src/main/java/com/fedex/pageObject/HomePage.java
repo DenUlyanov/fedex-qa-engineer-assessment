@@ -3,6 +3,7 @@ package com.fedex.pageObject;
 import com.fedex.BrowserUtils;
 import com.fedex.location.LocationProvider;
 import net.serenitybdd.core.Serenity;
+import net.serenitybdd.core.pages.PageObject;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -14,17 +15,11 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 import java.util.Optional;
 
-public class HomePage {
+public class HomePage extends PageObject {
 
     private static final Logger logger = LoggerFactory.getLogger(HomePage.class);
-
-    private final WebDriver driver;
-    private final BrowserUtils browser;
-
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-        browser = new BrowserUtils(driver);
-    }
+    private final WebDriver driver = getDriver();
+    private final BrowserUtils browser = new BrowserUtils(driver);
 
     public void openHomePage() {
         String baseUrl = Serenity.environmentVariables().getProperty("base.url");
@@ -84,11 +79,11 @@ public class HomePage {
 
         SoftAssertions softAssertion = new SoftAssertions();
 
-        softAssertion.assertThat(browser.isElementVisible(By.id(HomePageLocators.RATE_SUMMARY)))
+        softAssertion.assertThat(browser.elementVisible(By.id(HomePageLocators.RATE_SUMMARY)))
                 .as("Rate summary is not visible")
                 .isEqualTo(true);
 
-        softAssertion.assertThat(browser.isElementVisible(By.id(HomePageLocators.SERVICE_OPTIONS)))
+        softAssertion.assertThat(browser.elementVisible(By.id(HomePageLocators.SERVICE_OPTIONS)))
                 .as("Service options are not visible")
                 .isEqualTo(true);
 
@@ -105,7 +100,7 @@ public class HomePage {
                 .contains("€");
 
         Assert.assertTrue("SHIP NOW button is missing",
-                browser.isElementVisible(By.cssSelector(HomePageLocators.SHIP_NOW)));
+                browser.elementVisible(By.cssSelector(HomePageLocators.SHIP_NOW)));
     }
 
     private void fillInAddress(WebElement element, String text) {
@@ -127,20 +122,20 @@ public class HomePage {
         logger.info("Navigating to Login page");
         browser.clickElement(driver.findElement(By.id(HomePageLocators.LOGIN_SIGHNUP_LINK)));
         browser.clickElement(driver.findElement(By.xpath(HomePageLocators.LOG_IN)));
-        return new LoginPage(driver);
+        return new LoginPage();
     }
 
     public CreateUserPage navigateToCreateUserPage() {
         logger.info("Navigating to Create User page");
         browser.clickElement(driver.findElement(By.id(HomePageLocators.LOGIN_SIGHNUP_LINK)));
         browser.clickElement(driver.findElement(By.xpath(HomePageLocators.CREATE_USER)));
-        return new CreateUserPage(driver);
+        return new CreateUserPage();
     }
 
     public OpenAccountPage navigateToOpenAccountPage() {
         logger.info("Navigating to Open Account page");
         browser.clickElement(driver.findElement(By.id(HomePageLocators.LOGIN_SIGHNUP_LINK)));
         browser.clickElement(driver.findElement(By.xpath(HomePageLocators.OPEN_ACCOUNT)));
-        return new OpenAccountPage(driver);
+        return new OpenAccountPage();
     }
 }

@@ -1,18 +1,14 @@
 package com.fedex.pageObject;
 
 import com.fedex.BrowserUtils;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class CreateUserPage {
-    private final BrowserUtils browser;
-
-    public CreateUserPage(WebDriver driver) {
-        browser = new BrowserUtils(driver);
-    }
+public class CreateUserPage extends PageObject {
+    private final BrowserUtils browser = new BrowserUtils(getDriver());
 
     public boolean isCreateUserPageDisplayed() {
         browser.waitForElement(By.id(CreateUserPageLocators.ACCEPT_BUTTON));
-        return browser.isElementVisible(By.id(CreateUserPageLocators.ACCEPT_BUTTON));
+        return browser.elementVisible(By.id(CreateUserPageLocators.ACCEPT_BUTTON));
     }
 }

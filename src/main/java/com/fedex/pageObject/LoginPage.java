@@ -1,19 +1,15 @@
 package com.fedex.pageObject;
 
 import com.fedex.BrowserUtils;
+import net.serenitybdd.core.pages.PageObject;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 
-public class LoginPage {
+public class LoginPage extends PageObject {
 
-    private final BrowserUtils browser;
-
-    public LoginPage(WebDriver driver) {
-        browser = new BrowserUtils(driver);
-    }
+    private final BrowserUtils browser = new BrowserUtils(getDriver());
 
     public boolean isLoginPageDisplayed() {
         browser.waitForElement(By.id(LoginPageLocators.LOGIN_BUTTON));
-        return browser.isElementVisible(By.id(LoginPageLocators.LOGIN_BUTTON));
+        return browser.elementVisible(By.id(LoginPageLocators.LOGIN_BUTTON));
     }
 }
