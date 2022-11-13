@@ -8,14 +8,18 @@ import io.cucumber.java.After;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import net.thucydides.core.annotations.Managed;
 import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class HomePageStepsDefinition extends BaseStep {
+public class HomePageStepsDefinition {
 
+    private final HomePage homePage = new HomePage();
     private static final Logger logger = LoggerFactory.getLogger(HomePageStepsDefinition.class);
-    private final HomePage homePage = new HomePage(getChromeDriver());
+    @Managed
+    WebDriver driver;
 
     @Given("customer is on default home page")
     public void customerIsOnDefaultHomePage() {
@@ -43,13 +47,6 @@ public class HomePageStepsDefinition extends BaseStep {
     @Then("customer can see shipment price")
     public void customerCanSeeShipmentPrice() {
         homePage.verifyDeliveryRate();
-
-    }
-
-    @After
-    public void afterScenario() {
-        logger.info("Closing browser window ... ");
-        driver.close();
     }
 
     @Then("verify login page is accessible from home page")
@@ -71,5 +68,11 @@ public class HomePageStepsDefinition extends BaseStep {
         OpenAccountPage openAccountPage = homePage.navigateToOpenAccountPage();
         Assert.assertTrue("Open account page is not displayed",
                 openAccountPage.isOpenAccountPageDisplayed());
+    }
+
+    @After
+    public void afterScenario() {
+        logger.info("Closing browser window ... ");
+        driver.close();
     }
 }

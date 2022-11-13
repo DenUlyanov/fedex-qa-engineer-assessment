@@ -81,7 +81,8 @@ public class BrowserUtils {
         return text;
     }
 
-    public boolean isElementVisible(By by) {
+
+    public boolean elementVisible(By by) {
         List<WebElement> elements = driver.findElements(by);
         return elements.size() > 0;
     }
