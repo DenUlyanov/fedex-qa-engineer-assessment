@@ -50,7 +50,7 @@ public class HomePage {
     }
 
     public void acceptAllCookies() {
-        browser.clickElement(driver.findElement(By.className(HomePageLocators.COOKIES_WRAPPER)));
+        browser.waitForElement(driver.findElement(By.className(HomePageLocators.COOKIES_ACCEPT)));
         browser.clickElement(driver.findElement(By.className(HomePageLocators.COOKIES_ACCEPT)));
         logger.info("Cookies accepted");
     }
